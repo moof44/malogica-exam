@@ -1,0 +1,42 @@
+
+  :host {
+    display: block;
+  
+    .user-details-container {
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      height: 80vh;            
+    }
+    
+    mat-card {
+      width: 50%; 
+      max-width: 600px; 
+    }
+    
+    mat-card-header {
+      margin-bottom: 16px; 
+    }
+    
+    mat-list-item {
+      margin-bottom: 8px; 
+      height: 30px; // Set a fixed height for list items
+  
+      // Align icon and text vertically
+      display: flex;
+      align-items: center; 
+
+      ::ng-deep{
+
+        span.mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text {
+          display: inline-flex;
+          gap: 1rem;
+        }
+      }
+    }
+    
+    mat-icon {
+      margin-right: 8px; 
+    }
+  }
+  
