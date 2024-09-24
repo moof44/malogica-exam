@@ -1,1 +1,33 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    routerLink="/users"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Malogica Exam</span>
+  <span class="example-spacer"></span>
+  @if (isLoggedIn()) {
+    <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        (click)="logout()"
+    >
+        <mat-icon>logout</mat-icon>
+    </button>
+  }@else{
+
+    <button
+        mat-icon-button
+        class="example-icon login-icon"
+        aria-label="Example icon-button with heart icon"
+        routerLink="/login"
+    >
+        <mat-icon>login</mat-icon>
+    </button>
+  }
+</mat-toolbar>
 <router-outlet />

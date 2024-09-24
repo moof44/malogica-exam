@@ -1,28 +1,28 @@
 // user-list.component.spec.ts
 
+import { CommonModule } from '@angular/common';
+import { DebugElement } from '@angular/core';
 import {
   ComponentFixture,
   TestBed,
   fakeAsync,
   tick,
 } from '@angular/core/testing';
-import { UserListComponent } from './user-list.component';
-import { UserService } from '../../user/user.service';
-import { of, throwError } from 'rxjs';
-import { User } from '../../user/user';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'; // For Material components
-import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'; // For Material components
+import { RouterLink } from '@angular/router';
+import { of } from 'rxjs';
+import { UserListComponent } from './user-list.component';
+import { UserService } from '../../user.service';
+import { User } from '../../user';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;

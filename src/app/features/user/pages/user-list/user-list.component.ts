@@ -5,22 +5,24 @@ import {
   ChangeDetectorRef,
   Component,
   effect,
+  inject,
   OnInit,
   signal,
   ViewChild,
 } from '@angular/core';
-import { UserService } from '../../user/user.service';
-import { User } from '../../user/user';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
-import { catchError, finalize, map, of, throwError } from 'rxjs';
-import { Router, RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Router, RouterLink } from '@angular/router';
+import { catchError, finalize, map, of } from 'rxjs';
+import { User } from '../../user';
+import { UserService } from '../../user.service';
+import { UserStore } from '../../user.store';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-user-list',
@@ -41,7 +43,10 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
+  userStore = inject(UserStore);
+
+  //displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
+  displayedColumns = signal(['id', 'name', 'email', 'phone', 'actions']);
   dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
@@ -50,8 +55,33 @@ export class UserListComponent implements OnInit, AfterViewInit {
   loading = signal(true);
   error = signal(false); // Flag to track error state
 
-  constructor(private userService: UserService, private router: Router, private cdr: ChangeDetectorRef) {
+  mobileQuery: MediaQueryList;
+  smallScreenQuery!: MediaQueryList; 
+
+  private mobileQueryListener: () => void;
+  private smallScreenQueryListener!: () => void;
+
+
+  constructor(private userService: UserService, private router: Router, private cdr: ChangeDetectorRef, private media: MediaMatcher) {
     this.loading.set(true); // Set loading to true initially
+
+    this.mobileQuery = this.media.matchMedia('(max-width: 768px)');
+    this.smallScreenQuery = this.media.matchMedia('(max-width: 425px)'); 
+
+    this.mobileQueryListener = () => {
+      this.checkScreenWidth();
+      this.cdr.detectChanges();
+    };
+
+    this.smallScreenQueryListener = () => {
+      this.checkScreenWidth();
+      this.cdr.detectChanges();
+    };
+
+    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    this.smallScreenQuery.addEventListener('change', this.smallScreenQueryListener); 
+    this.checkScreenWidth();
+
     effect(() => {
       this.cdr.detectChanges();
       if (!this.loading() && this.paginator) {
@@ -65,7 +95,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource = new MatTableDataSource<User>([]);
-    this.simulateFirstRequestFailure();
+    if(this.userStore.isFirstRetry()) this.getUsers();
+    else this.simulateFirstRequestFailure();
   }
 
   getUsers(): void {
@@ -119,10 +150,21 @@ export class UserListComponent implements OnInit, AfterViewInit {
   // Method to retry fetching users
   retryGetUsers() {
     this.getUsers();
+    this.userStore.setFirstRetry();
   }
 
   goToUserDetails(user: User) {
     // Navigate to the details page and pass the user data
     this.router.navigate(['/users', user.id], { state: { user } });
+  }
+
+  checkScreenWidth() {
+    if (this.smallScreenQuery.matches) { 
+      this.displayedColumns.set(['id', 'name', 'email']); 
+    } else if (this.mobileQuery.matches) {
+      this.displayedColumns.set(['id', 'name', 'email', 'phone']); 
+    } else {
+      this.displayedColumns.set(['id', 'name', 'email', 'phone', 'actions']); 
+    }
   }
 }

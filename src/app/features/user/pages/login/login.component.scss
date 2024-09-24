@@ -1,0 +1,19 @@
+:host {
+  display: block;
+
+  // login.component.scss
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    mat-card {
+      width: 300px;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}

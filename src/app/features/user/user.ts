@@ -28,3 +28,10 @@ export interface Geo {
     company: Company;
   }
   
+
+  export interface UserLogin{
+    username: string,
+    password: string,
+    isLoggedIn: boolean,
+    isFirstRetry: boolean,
+  }
