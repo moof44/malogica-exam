@@ -39,3 +39,13 @@ All instruction were satisified.
 ## Exemption
 
 As for #11, State Management, the instruction was to use NGXS, I used NGRX / Signal Store. This is because I am more used to using NGRX and not NGXS. Will try to include NGXS within the time limit but if not, in case of getting the position, will surely study NGXS.
+
+## Remarks
+Would like to also show the personal project that I am doing at the moment which can be found here:
+Repository: https://github.com/moof44/personal-accounting-2
+and here
+URL: https://personal-accounting-3fbcb.web.app/
+
+This project is just being used for study purposes and is using Angular 18, Angular SSR, PWA and is optimized for mobile and desktop with best practices and performance in mind. 
+
+Kindly review the repository as reference for coding.
