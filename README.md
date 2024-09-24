@@ -2,26 +2,35 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## How to run
+Clone the repository and then run `npm ci` to install all dependencies.
 
-## Code scaffolding
+## How to test
+Run `ng test`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Explanation
+All instruction were satisified
+1. **Set up Angular Project:** Use Angular CLI to set up a new Angular project.
 
-## Build
+2. **User Service:** Create a service named `UserService` to fetch user data from the provided mock API endpoint (`https://jsonplaceholder.typicode.com/users`).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. **User List Component:** Implement a component named `UserListComponent` to display the list of users fetched from the API. Each user item in the list should display the user's name, email, and phone number.
 
-## Running unit tests
+4. **Error Handling:** Implement error handling in case the API request fails. Display an error message to the user and provide a way to retry the request.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. **Responsive Design:** Ensure that the application is responsive and looks good on both desktop and mobile devices.
+E
+6. **User Details Page:** Extend the application to include a `UserDetailsComponent`. When a user item is clicked from the `UserListComponent`, navigate to the UserDetailsComponent to display detailed information about the selected user, including their name, email, phone number, address, and company details.
 
-## Running end-to-end tests
+7. **Lazy Loading:** Implement lazy loading for the UserDetailsComponent to improve the application's performance. Load the UserDetailsComponent only when navigating to the user details page.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+8. **Search Functionality:** Add a search bar to the `UserListComponent` to allow users to search for specific users by name. Implement filtering functionality to dynamically update the user list based on the search query.
 
-## Further help
+9. **Pagination:** Implement pagination for the user list to display a limited number of users per page. Allow users to navigate between pages to view more users. Ensure that the pagination controls adjust dynamically based on the number of users and current page.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+10. **Authentication Guard:** Create an authentication guard to protect the UserDetailsComponent route. Only authenticated users should be able to access the user details page. Implement a basic authentication mechanism using a hardcoded username and password.
+
+11. **State Management:** Integrate state management using NGXS to manage the application state, including user data and search/filtering criteria.
+
+12. **Unit Testing:** Write unit tests to test the functionality of the `UserService` and `UserListComponent`. Include test cases to verify the search functionality, pagination, and error handling.
