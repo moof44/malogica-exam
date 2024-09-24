@@ -40,7 +40,7 @@ All instruction were satisified.
 
 As for #11, State Management, the instruction was to use NGXS, I used NGRX / Signal Store. This is because I am more used to using NGRX and not NGXS. Will try to include NGXS within the time limit but if not, in case of getting the position, will surely study NGXS.
 
-As for #5, Responsive Design, I used MobileQuery by Angular material and marked screen width that seems notable to track and remove columns that can be considered optional.
+As for #5, Responsive Design, I used MediaMatcher by Angular material and marked screen width that seems notable to track and remove columns that can be considered optional.
 
 ## Remarks
 Would like to also show the personal project that I am doing at the moment which can be found here:
