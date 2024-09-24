@@ -36,9 +36,11 @@ All instruction were satisified.
 12. **Unit Testing:** Write unit tests to test the functionality of the `UserService` and `UserListComponent`. Include test cases to verify the search functionality, pagination, and error handling.
 
 
-## Exemption
+## Exemption / Other Explanation
 
 As for #11, State Management, the instruction was to use NGXS, I used NGRX / Signal Store. This is because I am more used to using NGRX and not NGXS. Will try to include NGXS within the time limit but if not, in case of getting the position, will surely study NGXS.
+
+As for Responsive Design, I used MobileQuery by Angular material and marked screen width that seems notable to track and remove columns that can be considered optional.
 
 ## Remarks
 Would like to also show the personal project that I am doing at the moment which can be found here:
