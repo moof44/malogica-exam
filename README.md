@@ -10,7 +10,7 @@ Clone the repository and then run `npm ci` to install all dependencies.
 Run `ng test`
 
 ## Explanation
-All instruction were satisified
+All instruction were satisified.
 1. **Set up Angular Project:** Use Angular CLI to set up a new Angular project.
 
 2. **User Service:** Create a service named `UserService` to fetch user data from the provided mock API endpoint (`https://jsonplaceholder.typicode.com/users`).
@@ -20,7 +20,7 @@ All instruction were satisified
 4. **Error Handling:** Implement error handling in case the API request fails. Display an error message to the user and provide a way to retry the request.
 
 5. **Responsive Design:** Ensure that the application is responsive and looks good on both desktop and mobile devices.
-E
+
 6. **User Details Page:** Extend the application to include a `UserDetailsComponent`. When a user item is clicked from the `UserListComponent`, navigate to the UserDetailsComponent to display detailed information about the selected user, including their name, email, phone number, address, and company details.
 
 7. **Lazy Loading:** Implement lazy loading for the UserDetailsComponent to improve the application's performance. Load the UserDetailsComponent only when navigating to the user details page.
@@ -34,3 +34,8 @@ E
 11. **State Management:** Integrate state management using NGXS to manage the application state, including user data and search/filtering criteria.
 
 12. **Unit Testing:** Write unit tests to test the functionality of the `UserService` and `UserListComponent`. Include test cases to verify the search functionality, pagination, and error handling.
+
+
+## Exemption
+
+As for #11, State Management, the instruction was to use NGXS, I used NGRX / Signal Store. This is because I am more used to using NGRX and not NGXS. Will try to include NGXS within the time limit but if not, in case of getting the position, will surely study NGXS.
