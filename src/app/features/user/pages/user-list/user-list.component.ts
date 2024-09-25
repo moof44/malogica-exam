@@ -45,7 +45,6 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class UserListComponent implements OnInit, AfterViewInit {
   userStore = inject(UserStore);
 
-  //displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
   displayedColumns = signal(['id', 'name', 'email', 'phone', 'actions']);
   dataSource!: MatTableDataSource<User>;
 
@@ -110,7 +109,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
       )
       .subscribe({
         next: (users) => {
-          //this.dataSource.data = users;
           this.dataSource.data = users;
         },
       });

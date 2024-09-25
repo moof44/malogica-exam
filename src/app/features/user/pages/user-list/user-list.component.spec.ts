@@ -80,8 +80,6 @@ describe('UserListComponent', () => {
     expect(component.dataSource.data.length).toBe(mockUsers.length);
   }));
 
-  // ... (other imports and test setup)
-
   it('should apply filter and reset paginator', fakeAsync(() => {
     const mockUsers: User[] = [
       {
@@ -170,7 +168,6 @@ describe('UserListComponent', () => {
 
     expect(component.dataSource.filter).toBe('john'); // Filter should be applied
 
-    // If paginator is available, check if it's reset to the first page
     if (component.dataSource.paginator) {
       expect(component.dataSource.paginator.pageIndex).toBe(0);
     }

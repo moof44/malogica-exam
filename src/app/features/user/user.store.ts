@@ -22,15 +22,11 @@ import {
     patchState,
     signalStore,
     signalStoreFeature,
-    withComputed,
-    withHooks,
     withMethods,
     withState
-  } from '@ngrx/signals';
-import { setAllEntities, withEntities } from '@ngrx/signals/entities';
+} from '@ngrx/signals';
+import { withEntities } from '@ngrx/signals/entities';
 import { User, UserLogin } from './user';
-import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe } from 'rxjs';
 
 
 function withUserSettings(){
@@ -47,9 +43,6 @@ function withUserSettings(){
 export const UserStore = signalStore(
     withEntities<User>(),
     withUserSettings(),
-    withComputed(({entities, username, password, isLoggedIn})=>({
-        
-    })),
     withMethods((store)=>({
         loginUser: (username:string, password: string)=>{
             patchState(store, {username, password, isLoggedIn: true})
