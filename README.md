@@ -42,6 +42,9 @@ As for #11, State Management, the instruction was to use NGXS, I used NGRX / Sig
 
 As for #5, Responsive Design, I used MediaMatcher by Angular material and marked screen width that seems notable to track and remove columns that can be considered optional.
 
+## Additions
+Toolbar - added toolbar with login and logout icon button
+
 ## Remarks
 Would like to also show the personal project that I am doing at the moment which can be found here:
 Repository: https://github.com/moof44/personal-accounting-2
